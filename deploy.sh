@@ -53,6 +53,8 @@ echo \
 
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+sudo apt install docker-compose
+
 
 # Install Portainer
 sudo docker volume create portainer_data
