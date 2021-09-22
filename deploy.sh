@@ -26,7 +26,7 @@ sudo systemctl restart networking.service
 sudo /etc/init.d/networking restart
 
 # Install XRDP
-sudo apt install ubuntu-desktop
+sudo apt install ubuntu-desktop -y
 chmod +x  ./xrdp-installer.sh
 ./xrdp-installer.sh -s -l
 sudo ufw allow 3389/tcp
@@ -51,7 +51,7 @@ echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-sudo apt-get update
+sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 # Install Portainer
