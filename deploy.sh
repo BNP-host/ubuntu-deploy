@@ -19,11 +19,11 @@ sudo systemctl start ssh
 sudo ufw allow ssh
 sudo ufw enable
 
-# IP set IP
-sudo rm -rf /etc/network/interfaces
-cp ./interfaces /etc/network/interfaces
-sudo systemctl restart networking.service
-sudo /etc/init.d/networking restart
+## Set LAN Address
+# sudo rm -rf /etc/network/interfaces
+# cp ./interfaces /etc/network/interfaces
+# sudo systemctl restart networking.service
+# sudo /etc/init.d/networking restart
 
 # Install XRDP
 sudo apt install ubuntu-desktop -y
