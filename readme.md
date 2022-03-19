@@ -1,8 +1,8 @@
 # Vamo lá meu lindo
 ## Clonar repo
-> git clone https://github.com/BNP-host/ubuntu-deploy
-> cd ./ubuntu-deploy
-> sudo chmod 777 ./deploy.sh
+1. git clone https://github.com/BNP-host/ubuntu-deploy
+2. cd ./ubuntu-deploy
+3. sudo chmod 777 ./deploy.sh
 ## Editar ddclient
 `sudo nano ./ddclient.conf`
 > adicionar chave entre os parenteses
