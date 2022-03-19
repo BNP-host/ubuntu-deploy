@@ -68,11 +68,9 @@ sudo cp ./ddclient.conf /etc/ddclient.conf
 sudo service ddclient restart
 
 # Install webmin
-sudo wget https://download.webmin.com/jcameron-key.asc
-sudo apt-key add jcameron-key.asc
-sudo apt-get install apt-transport-https
-sudo apt-get update
-sudo apt-get install webmin
+sudo wget http://prdownloads.sourceforge.net/webadmin/webmin_1.990_all.deb
+sudo dpkg --install webmin_1.990_all.deb
+
 
 # Enable Multi-Arch
 sudo dpkg --add-architecture i386
