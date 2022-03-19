@@ -14,3 +14,5 @@ deb http://archive.canonical.com/ubuntu focal partner
 deb-src http://archive.canonical.com/ubuntu focal partner
 
 deb https://download.webmin.com/download/repository sarge contrib
+
+deb https://dl.winehq.org/wine-builds/ubuntu/ focal main

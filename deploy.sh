@@ -26,10 +26,10 @@ sudo ufw enable
 # sudo /etc/init.d/networking restart
 
 # Install XRDP
-#sudo apt install ubuntu-desktop -y
-#chmod +x  ./xrdp-installer.sh
-#./xrdp-installer.sh -s -l
-#sudo ufw allow 3389/tcp
+sudo apt install ubuntu-desktop -y
+chmod +x  ./xrdp-installer.sh
+./xrdp-installer.sh -s -l
+sudo ufw allow 3389/tcp
 #    Add to .Xsession file
 # unset DBUS_SESSION_BUS_ADDRESS
 # unset XDG_RUNTIME_DIR
@@ -73,3 +73,18 @@ sudo apt-key add jcameron-key.asc
 sudo apt-get install apt-transport-https
 sudo apt-get update
 sudo apt-get install webmin
+
+# Enable Multi-Arch
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get install libgtk2.0-0:i386 libpangox-1.0-0:i386 libpangoxft-1.0-0:i386 libidn11:i386 libglu1-mesa:i386
+sudo apt-get install -f
+
+# Install wine
+sudo dpkg --add-architecture i386
+sudo wget -nc https://dl.winehq.org/wine-builds/Release.key
+sudo apt-key add Release.key
+
+sudo apt-get update
+sudo apt-get install --install-recommends winehq-stable -y
