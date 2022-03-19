@@ -26,10 +26,10 @@ sudo ufw enable
 # sudo /etc/init.d/networking restart
 
 # Install XRDP
-sudo apt install ubuntu-desktop -y
-chmod +x  ./xrdp-installer.sh
-./xrdp-installer.sh -s -l
-sudo ufw allow 3389/tcp
+#sudo apt install ubuntu-desktop -y
+#chmod +x  ./xrdp-installer.sh
+#./xrdp-installer.sh -s -l
+#sudo ufw allow 3389/tcp
 #    Add to .Xsession file
 # unset DBUS_SESSION_BUS_ADDRESS
 # unset XDG_RUNTIME_DIR
@@ -66,3 +66,10 @@ sudo apt-get install ddclient libio-socket-ssl-perl
 sudo rm -rf /etc/ddclient.conf
 sudo cp ./ddclient.conf /etc/ddclient.conf
 sudo service ddclient restart
+
+# Install webmin
+sudo wget https://download.webmin.com/jcameron-key.asc
+sudo apt-key add jcameron-key.asc
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install webmin
