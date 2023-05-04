@@ -4,7 +4,6 @@
 # sudo export $(grep -v '^#' .env | xargs)
 
 # Universal /source.list
-
 sudo rm -rf /etc/apt/sources.list
 sudo cp ./sources.list /etc/apt/sources.list
 sudo apt-get update -y && sudo apt upgrade -y
@@ -45,6 +44,11 @@ sudo apt-get install \
     gnupg \
     lsb-release
 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose 
+docker-compose --version
+
+
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 echo \
@@ -62,27 +66,27 @@ sudo docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -
 sudo ufw allow 9000
 
 # Install & Configure DDClient
-sudo apt-get install ddclient libio-socket-ssl-perl
-sudo rm -rf /etc/ddclient.conf
-sudo cp ./ddclient.conf /etc/ddclient.conf
-sudo service ddclient restart
+#sudo apt-get install ddclient libio-socket-ssl-perl
+#sudo rm -rf /etc/ddclient.conf
+#sudo cp ./ddclient.conf /etc/ddclient.conf
+#sudo service ddclient restart
 
 # Install webmin
-sudo wget http://prdownloads.sourceforge.net/webadmin/webmin_1.990_all.deb
-sudo dpkg --install webmin_1.990_all.deb
-
+curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh
+sh setup-repos.sh
+apt-get install webmin
 
 # Enable Multi-Arch
-sudo dpkg --add-architecture i386
-sudo apt-get update
-sudo apt-get dist-upgrade
-sudo apt-get install libgtk2.0-0:i386 libpangox-1.0-0:i386 libpangoxft-1.0-0:i386 libidn11:i386 libglu1-mesa:i386
-sudo apt-get install -f
+#sudo dpkg --add-architecture i386
+#sudo apt-get update
+#sudo apt-get dist-upgrade
+#sudo apt-get install libgtk2.0-0:i386 libpangox-1.0-0:i386 libpangoxft-1.0-0:i386 libidn11:i386 libglu1-mesa:i386
+#sudo apt-get install -f
 
 # Install wine
-sudo dpkg --add-architecture i386
-sudo wget -nc https://dl.winehq.org/wine-builds/Release.key
-sudo apt-key add Release.key
+#sudo dpkg --add-architecture i386
+#sudo wget -nc https://dl.winehq.org/wine-builds/Release.key
+#sudo apt-key add Release.key
 
-sudo apt-get update
-sudo apt-get install --install-recommends winehq-stable -y
+#sudo apt-get update
+#sudo apt-get install --install-recommends winehq-stable -y
