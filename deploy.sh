@@ -4,19 +4,36 @@
 # sudo export $(grep -v '^#' .env | xargs)
 
 # Universal /source.list
-sudo rm -rf /etc/apt/sources.list
-sudo cp ./sources.list /etc/apt/sources.list
-sudo apt-get update -y && sudo apt upgrade -y
+# clear sources.list but shouldn't be empty
+echo " " > /etc/apt/sources.list
+
+# adding repos to sources.lis.d folder
+add-apt-repository -n -y "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) main restricted universe multiverse"
+add-apt-repository -n -y "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc)-updates main restricted universe multiverse"
+add-apt-repository -n -y "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc)-backports main restricted universe multiverse"
+add-apt-repository -n -y "deb http://security.ubuntu.com/ubuntu $(lsb_release -sc)-security main restricted universe multiverse"
+
+# The second run for System indentify it as template:
+### Found existing deb entry in /etc/apt/sources.list.d/archive_uri-http_archive_ubuntu_com_ubuntu_-jammy.list
+### Archive has template, updating /etc/apt/sources.list
+add-apt-repository -n -y "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) main restricted universe multiverse"
+add-apt-repository -n -y "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc)-updates main restricted universe multiverse"
+add-apt-repository -n -y "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc)-backports main restricted universe multiverse"
+add-apt-repository -n -y "deb http://security.ubuntu.com/ubuntu $(lsb_release -sc)-security main restricted universe multiverse"
+
+# All commented deb-src repo stay in sources.list.d and all deb repo will be in sources.list
+
+apt update -y && apt uprade -y
 
 # Install CURL
 sudo apt install curl -y
 
 # Enable SSH
-sudo apt install openssh-server -y
-sudo systemctl enable ssh
-sudo systemctl start ssh
-sudo ufw allow ssh
-sudo ufw enable
+#sudo apt install openssh-server -y
+#sudo systemctl enable ssh
+#sudo systemctl start ssh
+#sudo ufw allow ssh
+#sudo ufw enable
 
 ## Set LAN Address
 # sudo rm -rf /etc/network/interfaces
